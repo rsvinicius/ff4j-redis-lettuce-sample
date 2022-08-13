@@ -4,7 +4,7 @@ FF4j is an implementation of the Feature Toggle pattern written in Java. Feature
 
 ## Description
 
-FF4J usage sample using redis (lettuce) store. The toggle can be operated through web console, via api through CLI.
+FF4J usage sample using redis (lettuce) store. The toggle can be operated through web console or via api.
 
 ## Requirements
 
