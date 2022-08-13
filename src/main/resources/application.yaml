@@ -1,0 +1,13 @@
+server:
+  port: 9080
+  servlet:
+    context-path: /ff4j-redis
+
+redis:
+  host: localhost
+  port: 6379
+
+ff4j:
+  username: admin
+  password: secret
+  ttl: 60 # Cacheable Feature Flag Time To Live in seconds
