@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class Ff4jRedisSampleApplication
+class Application
 
 fun main(args: Array<String>) {
-    runApplication<Ff4jRedisSampleApplication>(*args)
+    runApplication<Application>(*args)
 }
