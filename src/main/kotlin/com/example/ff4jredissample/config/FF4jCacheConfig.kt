@@ -12,12 +12,12 @@ import org.ff4j.store.PropertyStoreRedisLettuce
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Primary
 
 @Configuration
 class FF4jCacheConfig(
     @Value("\${redis.host}") private val redisHost: String,
     @Value("\${redis.port}") private val redisPort: Int,
-    @Value("\${ff4j.ttl}") private val ffTimeToLive: Int
 ) {
 
     @Bean
@@ -27,9 +27,7 @@ class FF4jCacheConfig(
         val redisURI = RedisURI.create(redisHost, redisPort)
         val redisCacheClient = RedisClient.create(redisURI)
 
-        val ff4jCache = FF4jCacheManagerRedisLettuce(redisCacheClient).also {
-            it.timeToLive = ffTimeToLive
-        }
+        val ff4jCache = FF4jCacheManagerRedisLettuce(redisCacheClient)
 
         val fStore: FeatureStore = FeatureStoreRedisLettuce(redisCacheClient)
         val pStore: PropertyStore = PropertyStoreRedisLettuce(redisCacheClient)

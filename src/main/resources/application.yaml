@@ -10,4 +10,3 @@ redis:
 ff4j:
   username: admin
   password: secret
-  ttl: 60 # Cacheable Feature Flag Time To Live in seconds
