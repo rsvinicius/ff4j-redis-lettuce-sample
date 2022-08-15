@@ -13,37 +13,31 @@ import org.springframework.web.bind.annotation.RestController
 class FeatureFlagController(
     private val ff4j: FF4j,
 ) {
-    @GetMapping("/ff-status/{name}")
-    fun getFeatureFlagStatus(@PathVariable name: String): String {
+    @GetMapping("/toggle-status/{name}")
+    fun getToggleStatus(@PathVariable name: String): String {
         return ff4j.check(name).let {
             val status = if (it) "enabled" else "disabled"
             "Feature flag=${name} is $status"
         }
     }
 
-    @GetMapping("/available-ffs")
-    fun getAvailableFeatureFlags(): Map<String, Feature> {
+    @GetMapping("/available-toggles")
+    fun getAvailableToggles(): Map<String, Feature> {
         return ff4j.features
     }
 
-    @PutMapping("/create-ff/{name}")
-    fun createNewFeatureFlag(@PathVariable name: String) {
+    @PutMapping("/create-toggle/{name}")
+    fun createToggle(@PathVariable name: String) {
         ff4j.createFeature(name)
     }
 
-    @PutMapping("/delete-ff/{name}")
+    @PutMapping("/delete-toggle/{name}")
     fun deleteFeatureFlag(@PathVariable name: String) {
         ff4j.delete(name)
     }
 
-    @PutMapping("/toogle-ff/{name}")
-    fun toggleFeature(@PathVariable name: String) : String {
-        return if (ff4j.check(name)) {
-            ff4j.disable(name)
-            "Feature flag=${name} disabled!"
-        } else {
-            ff4j.enable(name)
-            "Feature flag=${name} enabled!"
-        }
+    @PutMapping("/turn-toggle/{name}")
+    fun turnToggle(@PathVariable name: String) {
+        if (ff4j.check(name)) ff4j.disable(name) else ff4j.enable(name)
     }
 }
