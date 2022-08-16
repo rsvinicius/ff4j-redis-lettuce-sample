@@ -1,4 +1,4 @@
-# FF4J - REDIS - SAMPLE
+# FF4J - SAMPLE
 
 FF4j is an implementation of the Feature Toggle pattern written in Java. Feature Toggle (or Feature Flag) is the capacity for a program or an application to change features (business logic) behavior at runtime.
 
