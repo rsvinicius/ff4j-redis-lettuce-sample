@@ -6,7 +6,3 @@ server:
 redis:
   host: localhost
   port: 6379
-
-ff4j:
-  username: admin
-  password: secret

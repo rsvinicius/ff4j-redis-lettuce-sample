@@ -1,13 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val kotlinVersion = "1.7.10"
-val springBootVersion = "2.7.2"
-val ff4jVersion = "1.8.13"
+val springBootVersion = "2.7.18"
+val ff4jVersion = "1.9"
 
 plugins {
     id("org.springframework.boot") version "2.7.2"
     id("io.spring.dependency-management") version "1.0.12.RELEASE"
-    kotlin("jvm") version "1.6.21"
+    kotlin("jvm") version "1.7.22"
     kotlin("plugin.spring") version "1.6.21"
 }
 
@@ -25,9 +25,9 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
     implementation("org.apache.commons:commons-collections4:4.4")
-    implementation("org.ff4j:ff4j-spring-boot-starter:$ff4jVersion")
     implementation("org.ff4j:ff4j-web:$ff4jVersion")
     implementation("org.ff4j:ff4j-store-redis:$ff4jVersion")
+    implementation("org.springdoc:springdoc-openapi-ui:1.7.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
 }
 

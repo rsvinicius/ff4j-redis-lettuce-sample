@@ -2,8 +2,10 @@ package com.example.ff4jredissample.controller
 
 import org.ff4j.FF4j
 import org.ff4j.core.Feature
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -26,12 +28,12 @@ class FeatureFlagController(
         return ff4j.features
     }
 
-    @PutMapping("/create-toggle/{name}")
+    @PostMapping("/create-toggle/{name}")
     fun createToggle(@PathVariable name: String) {
         ff4j.createFeature(name)
     }
 
-    @PutMapping("/delete-toggle/{name}")
+    @DeleteMapping("/delete-toggle/{name}")
     fun deleteFeatureFlag(@PathVariable name: String) {
         ff4j.delete(name)
     }

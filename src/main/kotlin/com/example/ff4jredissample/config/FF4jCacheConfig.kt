@@ -12,7 +12,6 @@ import org.ff4j.store.PropertyStoreRedisLettuce
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.Primary
 
 @Configuration
 class FF4jCacheConfig(
@@ -28,7 +27,6 @@ class FF4jCacheConfig(
         val redisCacheClient = RedisClient.create(redisURI)
 
         val ff4jCache = FF4jCacheManagerRedisLettuce(redisCacheClient)
-
         val fStore: FeatureStore = FeatureStoreRedisLettuce(redisCacheClient)
         val pStore: PropertyStore = PropertyStoreRedisLettuce(redisCacheClient)
 
@@ -36,9 +34,7 @@ class FF4jCacheConfig(
 
         ff4j.featureStore = ff4jCacheProxy
         ff4j.propertiesStore = ff4jCacheProxy
-
         ff4j.audit(false)
-        ff4j.autoCreate(true)
 
         return ff4j
     }
